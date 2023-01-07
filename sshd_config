@@ -1,0 +1,36 @@
+Port 22
+Protocol 2
+
+# SSH/SFTP is the service this container provides, keep SSH host keys somewhere
+# safe between builds/runs
+HostKey /etc/ssh/keys/ssh_host_ed25519_key
+HostKey /etc/ssh/keys/ssh_host_rsa_key
+
+# http://www.doublecloud.org/2013/06/slow-ssh-client-and-quick-hack/
+UseDNS no
+
+LoginGraceTime 120
+StrictModes yes
+TCPKeepAlive yes
+PrintMotd no
+
+PermitRootLogin no
+PermitUserEnvironment no
+AllowTcpForwarding no
+X11Forwarding no
+X11DisplayOffset 10
+
+# Allow auth by key only
+PubkeyAuthentication yes
+AuthenticationMethods publickey
+
+# use keys from /etc/ssh/keys
+AuthorizedKeysCommand /usr/sbin/get_user_keys                                   
+AuthorizedKeysCommandUser root
+
+# Disallow all other auth methods
+IgnoreRhosts yes
+HostbasedAuthentication no
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+PasswordAuthentication no

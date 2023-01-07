@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+#
+
+keyDir=/etc/ssh/keys
+cache=/tmp/ssh_keys.cache
+
+# update cache if new key(s) found
+if [ ! -r "$cache" ] \
+   || find "$keyDir" -type f -name '*.pub' -newer "$cache" \
+        > /dev/null 2>&1 ; then
+  paste -d '\n' "$keyDir"/*.pub > "$cache"
+fi
+
+cat "$cache"

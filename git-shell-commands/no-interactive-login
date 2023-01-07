@@ -1,0 +1,4 @@
+#!/bin/sh
+printf '%s\n' "You've successfully authenticated."
+printf '%s\n' "However interactive shell access is not available."
+exit 128
