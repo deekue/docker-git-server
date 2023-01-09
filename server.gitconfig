@@ -1,0 +1,11 @@
+[uploadpack]
+	# required for partial clones
+	allowfilter = true
+
+	# required for sparse checkout with repos that have used force-push or rebases
+	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-uploadpackallowAnySHA1InWant
+	allowAnySHA1InWant = true
+
+	# important for replicas
+	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-uploadpackallowRefInWant
+	allowRefInWant = true

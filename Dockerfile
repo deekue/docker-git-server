@@ -17,6 +17,7 @@ RUN adduser -S -u "$GIT_UID" -s /usr/bin/git-shell git \
  && echo '' > /etc/motd
 
 COPY git-shell-commands /home/git/git-shell-commands
+COPY serve.gitconfig /home/git/.gitconfig
 COPY sshd_config /etc/ssh/sshd_config
 COPY get_user_keys /usr/sbin/get_user_keys
 COPY docker-entrypoint.sh /docker-entrypoint.sh
