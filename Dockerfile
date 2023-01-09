@@ -13,7 +13,7 @@ WORKDIR /git
 
 RUN adduser -S -u "$GIT_UID" -s /usr/bin/git-shell git \
  && echo git:$RANDOM | chpasswd \
- && mkdir -m 0755 /etc/ssh/keys \
+ && mkdir -m 0755 /etc/ssh/{host-,}keys \
  && echo '' > /etc/motd
 
 COPY git-shell-commands /home/git/git-shell-commands
@@ -22,7 +22,7 @@ COPY get_user_keys /usr/sbin/get_user_keys
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 EXPOSE 22
-VOLUME ["/git", "/etc/ssh/keys"]
+VOLUME ["/git", "/etc/ssh/keys", "/etc/ssh/host-keys"]
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # TODO add labels

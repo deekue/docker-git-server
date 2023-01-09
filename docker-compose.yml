@@ -8,10 +8,11 @@ services:
     restart: unless-stopped
     container_name: git-server
     ports:
-      - "2222:22"
+      - "127.0.0.1:2222:22"
     volumes:
-      - ~/git-server/keys:/etc/ssh/keys
-      - ~/git-server/repos:/git
+      - ~/git-server/keys:/etc/ssh/keys:ro
+      - ~/git-server/host-keys:/etc/ssh/host-keys
+      - ~/git-server/repos:/git:ro
     environment:
       - SSHD_DEBUG=false  # set to true for debug output
    

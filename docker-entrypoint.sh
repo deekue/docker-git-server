@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 #
-hostKeyDir=/etc/ssh/keys
+hostKeyDir=/etc/ssh/host-keys
 
 trap 'trap " " SIGTERM; kill 0; wait' SIGTERM SIGQUIT SIGINT
 
