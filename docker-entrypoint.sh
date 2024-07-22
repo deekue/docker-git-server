@@ -3,9 +3,9 @@
 #
 hostKeyDir=/etc/ssh/host-keys
 
-trap 'trap " " SIGTERM; kill 0; wait' SIGTERM SIGQUIT SIGINT
+trap 'trap " " TERM; kill 0; wait' TERM QUIT INT
 
-if [[ "$SSHD_DEBUG" == "true" ]] ; then
+if [ "$SSHD_DEBUG" = "true" ] ; then
   SSHD_DEBUG="-e"
 fi
 

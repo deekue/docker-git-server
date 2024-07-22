@@ -1,19 +1,19 @@
-version: '2'
+version: '3'
 
 services:
 
   git-server:
-    image: deekue/docker-git-server:localbuild
+    image: deekue/docker-git-server:latest
     build: .
     restart: unless-stopped
     container_name: git-server
     ports:
-      - "127.0.0.1:2222:22"
+      - ${SERVER_PORT:-2222}:22
     volumes:
-      - ~/git-server/keys:/etc/ssh/keys:ro
-      - ~/git-server/host-keys:/etc/ssh/host-keys
-      - ~/git-server/repos:/git:ro
+      - ${DATA_PATH:-~/git-server}/keys:/etc/ssh/keys:ro
+      - ${DATA_PATH:-~/git-server}/host-keys:/etc/ssh/host-keys
+      - ${DATA_PATH:-~/git-server}/repos:/git:ro
     environment:
-      - SSHD_DEBUG=false  # set to true for debug output
+      - SSHD_DEBUG=${SSHD_DEBUG:-false}  # set to true for debug output
    
 
