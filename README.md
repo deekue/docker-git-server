@@ -2,6 +2,8 @@
 
 simple SSH based Git server in a Docker container.
 
+current image: ghcr.io/deekue/docker-git-server:main
+
 my use case is to create a read-only mirror of a Gerrit server to support partial clones+sparse checkouts (which JGit does not support).
 
 YMMV, WIP, here be dragons.
